@@ -19,12 +19,15 @@ class HomeScreen extends StatelessWidget {
               fontSize: 55),
         ),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.add,
-              color: Colors.black,
-              size: 25,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0.0, 20.0, 8.0, 20.0),
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.add,
+                color: Colors.black,
+                size: 25,
+              ),
             ),
           ),
         ],
@@ -33,45 +36,35 @@ class HomeScreen extends StatelessWidget {
         padding: EdgeInsets.all(18.0),
         child: Column(
           children: [
-            SizedBox(
-              height: 30,
-            ),
+            Divider(),
             WeatherCard(
               country: 'Argentina',
               time: '10:48 am',
               location: 'Mendoza',
               forecast: '19º',
             ),
-            SizedBox(
-              height: 30,
-            ),
+            Divider(),
             WeatherCard(
               country: 'Argentina',
               time: '10:48 am',
               location: 'Buenos Aires',
               forecast: '11º',
             ),
-            SizedBox(
-              height: 30,
-            ),
+            Divider(),
             WeatherCard(
               country: 'Chile',
               time: '10:48 am',
               location: 'Santiago de Chile',
               forecast: '22º',
             ),
-            SizedBox(
-              height: 30,
-            ),
+            Divider(),
             WeatherCard(
               country: 'Francia',
               time: '18:48 am',
               location: 'París',
               forecast: '9º',
             ),
-            SizedBox(
-              height: 30,
-            ),
+            Divider(),
           ],
         ),
       ),

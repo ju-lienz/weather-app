@@ -16,49 +16,52 @@ class WeatherCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Text(
-              country,
-              style: const TextStyle(color: Colors.grey, fontSize: 20),
-            ),
-            const Spacer(),
-            Text(
-              time,
-              style: const TextStyle(
-                color: Colors.grey,
-                fontSize: 20,
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text(
+                country,
+                style: const TextStyle(color: Colors.grey, fontSize: 20),
               ),
-            ),
-          ],
-        ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              location,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 32,
+              const Spacer(),
+              Text(
+                time,
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 20,
+                ),
               ),
-            ),
-            const Spacer(),
-            Text(
-              forecast,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 32,
+            ],
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                location,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 32,
+                ),
               ),
-            ),
-            const Icon(
-              Icons.sunny,
-              size: 30,
-            ),
-          ],
-        )
-      ],
+              const Spacer(),
+              Text(
+                forecast,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 32,
+                ),
+              ),
+              const Icon(
+                Icons.sunny,
+                size: 30,
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }
