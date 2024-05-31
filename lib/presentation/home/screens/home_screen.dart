@@ -1,10 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/config/api/api.dart';
+import 'package:weather_app/config/models/city_weather_model.dart';
 import 'package:weather_app/presentation/home/widgets/weather_card_widget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({
     super.key,
   });
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  CityWeatherModel? _weather;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchWeather(-34.61315, -58.37723).then((weather) {
+      setState(() {
+        _weather = weather;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,56 +51,25 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(18.0),
+      body: Padding(
+        padding: const EdgeInsets.all(18.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Divider(),
-              SizedBox(
+              const Divider(),
+              const SizedBox(
                 height: 20,
               ),
-              WeatherCard(
-                country: 'argentina',
-                time: '10:48 am',
-                location: 'buenos aires',
-                forecast: '19º',
-              ),
+              _weather != null
+                  ? WeatherCard(
+                      country: 'argentina',
+                      time: '10:48 am',
+                      location: 'buenos aires',
+                      forecast: _weather!
+                          .climaActual, // Access data from CityWeatherModel
+                    )
+                  : const Center(child: CircularProgressIndicator()),
               Divider(),
-              WeatherCard(
-                country: 'czech republic',
-                time: '10:48 am',
-                location: 'prague',
-                forecast: '11º',
-              ),
-              Divider(),
-              WeatherCard(
-                country: 'latvia',
-                time: '10:48 am',
-                location: 'riga',
-                forecast: '22º',
-              ),
-              Divider(),
-              WeatherCard(
-                country: 'fl, usa',
-                time: '18:48 am',
-                location: 'miami',
-                forecast: '9º',
-              ),
-              Divider(),
-              WeatherCard(
-                country: 'ny, usa',
-                time: '18:48 am',
-                location: 'new york',
-                forecast: '9º',
-              ),
-              Divider(),
-              WeatherCard(
-                country: 'australia',
-                time: '18:48 am',
-                location: 'sydney',
-                forecast: '9º',
-              ),
             ],
           ),
         ),

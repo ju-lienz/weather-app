@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:weather_app/config/models/city_weather_model.dart';
 
 String baseURL = 'http://api.weatherapi.com/v1';
-
 const apiKey = '270033c7f91741ae8bb145007242405';
 
-Future<dynamic> fetchWeather(double lat, double lon) async {
+Future<CityWeatherModel> fetchWeather(double lat, double lon) async {
   final dio = Dio();
   final params = {'lat': lat, 'lon': lon, 'appid': apiKey};
 
