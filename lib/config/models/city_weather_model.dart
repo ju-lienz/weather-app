@@ -5,7 +5,7 @@ class CityWeatherModel {
 
   factory CityWeatherModel.fromJson(Map<String, dynamic> json) {
     return CityWeatherModel(
-      climaActual: json['climaActual'].toString(),
+      climaActual: json['weather'][0].toString(),
     );
   }
 }

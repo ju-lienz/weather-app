@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:weather_app/config/models/city_weather_model.dart';
 
 String baseURL = 'http://api.weatherapi.com/v1';
-const apiKey = '270033c7f91741ae8bb145007242405';
+const apiKey = '577e7d5701f27f9d16870d00fa874df7';
 
 Future<CityWeatherModel> fetchWeather(double lat, double lon) async {
   final dio = Dio();
@@ -13,7 +13,9 @@ Future<CityWeatherModel> fetchWeather(double lat, double lon) async {
       "https://api.openweathermap.org/data/2.5/weather",
       queryParameters: params,
     );
-    return response.data;
+
+    final weatherData = response.data as Map<String, dynamic>;
+    return CityWeatherModel.fromJson(weatherData);
   } catch (error) {
     throw Exception("Error fetching weather data: $error");
   }
